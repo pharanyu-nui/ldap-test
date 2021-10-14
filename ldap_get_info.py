@@ -34,14 +34,18 @@ def main():
     LDAP_PORT = int(args['port'])
     LDAP_USER = args['user']
     LDAP_PASSWORD = args['pass']
-    LDAP_SEARCH_BASE = args['base']
+    
+    SEARCH_BASE = args['base']
+    SEARCH_FILTER = '(|(objectclass=person)(objectcategory=user))'
+    # SEARCH_FILTER = '(objectclass=person)'
+    SEARCH_ATTRIBUTES = '*'
     SEARCH_SIZE_LIMIT = 100
 
     server = Server(LDAP_HOST, LDAP_PORT, get_info=ALL)
 
     conn = Connection(
         server, 
-        f'cn={LDAP_USER},{LDAP_SEARCH_BASE}', 
+        LDAP_USER, 
         LDAP_PASSWORD, 
         auto_bind=False,
         raise_exceptions=True,
@@ -52,10 +56,10 @@ def main():
     print(f'bind success')
 
     conn.search(
-        LDAP_SEARCH_BASE, 
-        '(objectclass=person)', 
-        attributes='*', 
-        size_limit=SEARCH_SIZE_LIMIT
+        SEARCH_BASE, 
+        SEARCH_FILTER, 
+        attributes=SEARCH_ATTRIBUTES, 
+        size_limit=SEARCH_SIZE_LIMIT,
     )
     print(f'search success found {len(conn.entries)}')
 

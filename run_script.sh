@@ -1,7 +1,7 @@
 #!/bin/bash
 
-python3 ldap_get_info.py --host="openldap" \
+python3 ldap_get_info.py --host="ldapad" \
   --port="389" \
-  --user="admin" \
-  --pass="admin_pass" \
-  --base="dc=ramhlocal,dc=com"
+  --user="uid=test,ou=users,dc=wimpi,dc=net" \
+  --pass="secret" \
+  --base="dc=wimpi,dc=net"
