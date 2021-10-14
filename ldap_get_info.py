@@ -6,7 +6,7 @@ def get_args():
     parser = argparse.ArgumentParser(description='Get users info from LDAP server.')
     parser.add_argument('--host', help='IP or Host name', type=str, required=True)
     parser.add_argument('--port', help='Port number', type=str, required=True)
-    parser.add_argument('--user', help='Username', type=str, required=True)
+    parser.add_argument('--user', help='User DN', type=str, required=True)
     parser.add_argument('--pass', help='Password', type=str, required=True)
     parser.add_argument('--base', help='LDAP base ex. dc=example,dc=com"', type=str, required=True)
     args = vars(parser.parse_args())
