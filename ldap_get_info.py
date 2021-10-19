@@ -70,7 +70,8 @@ def main():
     SEARCH_BASE = args['base']
     SEARCH_FILTER = '(|(objectclass=person)(objectcategory=user))'
     # SEARCH_FILTER = '(objectclass=person)'
-    SEARCH_ATTRIBUTES = '*'
+    SEARCH_ATTRIBUTES = ['distinguishedName', 'sAMAccountName', 'givenName', 'sn', 'mail', 'department']
+    # SEARCH_ATTRIBUTES = '*'
     SEARCH_SIZE_LIMIT = 100
 
     server = Server(LDAP_HOST, LDAP_PORT, get_info=ALL)
