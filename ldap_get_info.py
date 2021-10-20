@@ -68,7 +68,7 @@ def main():
     LDAP_PASSWORD = args['pass']
     
     SEARCH_BASE = args['base']
-    SEARCH_FILTER = '(|(objectclass=person)(objectcategory=user))'
+    SEARCH_FILTER = '(&(mail=*)(objectclass=user)(objectcategory=person)(!(useraccountcontrol:1.2.840.113556.1.4.803:=2)))'
     # SEARCH_FILTER = '(objectclass=person)'
     SEARCH_ATTRIBUTES = ['distinguishedName', 'sAMAccountName', 'givenName', 'sn', 'mail', 'department']
     # SEARCH_ATTRIBUTES = '*'
